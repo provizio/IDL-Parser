@@ -1265,8 +1265,7 @@ public class Context
         }
         else
         {
-            return new org.openjdk.nashorn.api.scripting.NashornScriptEngineFactory()
-                           .getScriptEngine();
+            return new ScriptEngineManager().getEngineByName("nashorn");
         }
     }
 
