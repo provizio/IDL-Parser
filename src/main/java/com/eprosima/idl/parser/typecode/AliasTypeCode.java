@@ -78,12 +78,15 @@ public class AliasTypeCode extends ContainerTypeCode
 
     public String getScopedname()
     {
-        if (m_scope.isEmpty())
-        {
+        if (m_scope.isEmpty()) {
             return m_name;
         }
 
         return m_scope + "::" + m_name;
+    }
+    
+    public String getCScopedname() {
+        return getScopedname().replace("::", "_");
     }
 
     public String getROS2Scopedname()
@@ -118,7 +121,7 @@ public class AliasTypeCode extends ContainerTypeCode
     public String getCTypename()
     {
         StringTemplate st = getCTypenameFromStringTemplate();
-        st.setAttribute("name", getScopedname());
+        st.setAttribute("name", getCScopedname());
         return st.toString();
     }
 

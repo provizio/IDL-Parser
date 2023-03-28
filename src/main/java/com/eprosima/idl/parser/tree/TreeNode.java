@@ -50,10 +50,14 @@ public class TreeNode implements Notebook
 
     public String getScopedname()
     {
-        if(m_scope == null || m_scope.isEmpty())
+        if (m_scope == null || m_scope.isEmpty())
             return m_name;
 
         return m_scope + "::" + m_name;
+    }
+    
+    public String getCScopedname() {
+        return getScopedname().replace("::", "_");
     }
 
     public String getROS2Scopedname()
@@ -62,14 +66,6 @@ public class TreeNode implements Notebook
             return m_name;
 
         return m_scope + "::dds_::" + m_name + "_";
-    }
-
-    public String getCScopedname()
-    {
-        if(m_scope.isEmpty())
-            return m_name;
-
-        return m_scope.replace("::", "_") + "_" + m_name;
     }
 
     public String getJavaScopedname()
